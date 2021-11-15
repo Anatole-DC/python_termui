@@ -1,4 +1,5 @@
 from src.colors.colors import COLORS, RESET
+
 def colored(text: str, color: str, color_type: str="font") -> str:
     """
         Return the colorized version of the text passed in parameters
