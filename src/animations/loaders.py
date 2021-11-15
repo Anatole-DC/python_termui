@@ -1,13 +1,43 @@
+from typing import List
+
+import keyboard
+from src.colors.color_tools import colored
+
 from src.animations.loading_tools import generate_grid, update_line
-from time import sleep
 
-def test():
-    generate_grid("[---------]")
-    sleep(0.5)
+def select(choices: List[str], default_line_selected:int=2):
 
-    bar = "█"
-    for i in range(1, 10):
-        update_line(1, f"[{bar * i}")
-        update_line(4, f"[{bar * i}")
-        update_line(5, f"[{bar * i}")
-        sleep(0.1)
+    # Initiating grid
+    height = len(choices)
+
+    generate_grid(height=height)
+
+    # Outputting choices
+    index = 1
+    for choice in choices:
+        if index == default_line_selected:
+            choice = colored(choice, "RED")
+        
+        update_line(index, choice, height)
+        index += 1
+
+    # Selector
+    choice = default_line_selected
+
+    while keyboard.read_key() != "enter":
+
+        if keyboard.read_key() == "up":
+            update_line(choice, choices[choice - 1], height)
+            choice -= 1
+            if choice < 1:
+                choice = height + 1
+            update_line(choice, colored(choices[choice - 1], "RED"), height)
+
+        if keyboard.read_key() == "down":
+            update_line(choice, choices[choice - 1], height)
+            choice += 1
+            if choice > height + 1:
+                choice = 1
+            update_line(choice, colored(choices[choice - 1], "RED"), height)
+
+    print(choice)

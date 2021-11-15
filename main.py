@@ -1,11 +1,13 @@
-from src.animations.loaders import test
+from src.animations.loaders import select
 
 def main():
     """
         The main function of the project.
     """
 
-    test()
+    select(
+        ["Premier choix", "Deuxième choix"]
+    )
 
     return 1
 
