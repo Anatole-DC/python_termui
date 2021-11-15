@@ -1,11 +1,11 @@
-from src.colors.colorizer import colored, rgb_colored, multicolored
+from src.animations.loaders import test
 
 def main():
     """
         The main function of the project.
     """
 
-    print(multicolored("Un message mutlicolor"))
+    test()
 
     return 1
 
