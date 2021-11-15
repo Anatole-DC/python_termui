@@ -4,9 +4,14 @@ def colored(text: str, color: str, color_type: str="font") -> str:
     """
         Return the colorized version of the text passed in parameters
     """
+    
     return colorize(text, get_color(color, color_type))
 
 def get_color(color: str, color_type: str) -> str:
+    """
+        Fetch the color from the color pannel
+    """
+
     try:
         color = COLORS[color.upper()][color_type]
         return color
@@ -15,4 +20,10 @@ def get_color(color: str, color_type: str) -> str:
         return RESET
 
 def colorize(text: str, color: str) -> str:
+    """
+        Take a string and a color, and returns the string colorized.
+    """
     return f"{color}{text}{RESET}"
+
+def rgb_colored(text: str, red: int, green: int, blue: int) -> str:
+    return f"\033[38;2;{red};{green};{blue}m{text}\033[38;2;255;255;255m"
