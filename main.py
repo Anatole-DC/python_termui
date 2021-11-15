@@ -1,10 +1,11 @@
-from src.colors.color_tools import colored, rgb_colored, multicolored
+from src.colors.colorizer import colored, rgb_colored, multicolored
+
 def main():
     """
         The main function of the project.
     """
 
-    print(multicolored("Un message en bleu"))
+    print(multicolored("Un message mutlicolor"))
 
     return 1
 
