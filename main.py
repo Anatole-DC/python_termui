@@ -1,11 +1,13 @@
-from src.colors.colorizer import colored, rgb_colored, multicolored
+from src.animations.loaders import select
 
 def main():
     """
         The main function of the project.
     """
 
-    print(multicolored("Un message mutlicolor"))
+    select(
+        ["Premier choix", "Deuxième choix"]
+    )
 
     return 1
 
